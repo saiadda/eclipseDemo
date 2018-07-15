@@ -1,0 +1,50 @@
+<apex:page controller="FormdatasaveController">
+<script>
+
+function validate(){
+var x=  document.getElementById('{!$Component.frm.txtUserName}');
+var y=  document.getElementById('{!$Component.frm.txtPasswordName}');
+
+if(x.value==""){
+alert('User Name Cannot be null');
+return false;
+}else{
+alert(x.value);
+}
+
+if(y.value==""){
+alert('Password Cannot be null');
+return false;
+}else{
+alert(y.value);
+}
+
+
+//savef(x.value,y.value);
+
+document.getElementById('{!$Component.frm.theusernameInput}').value=x.value;
+document.getElementById('{!$Component.frm.thepwdInput}').value=y.value;
+
+
+savef();
+
+}
+</script>
+
+ <apex:form id="frm">
+   
+                <b>Name</b> <apex:inputtext id="txtUserName"/><br></br>
+                <b>Password</b> <apex:inputtext id="txtPasswordName"/><br></br>
+                <apex:commandButton onclick="return validate(); " value="Click..!!"/>
+          
+  <apex:actionFunction action="{!saveForm}" name="savef" reRender="frm">
+     <!-- <apex:param name="firstParam" assignTo="{!username}" value=""/> 
+      <apex:param name="secondParam" assignTo="{!password }" value="" /> -->
+    
+   </apex:actionFunction>
+   
+    <apex:inputHidden value="{!username}" id="theusernameInput"/>
+    <apex:inputHidden value="{!password }" id="thepwdInput"/>
+    
+ </apex:form>
+</apex:page>

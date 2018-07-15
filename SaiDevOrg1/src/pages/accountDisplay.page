@@ -1,0 +1,13 @@
+<apex:page standardController="Account">
+    
+<apex:dataTable value="{! account.contacts}" var="item">
+    <apex:column value="{!item.name}"/>
+    <apex:column value="{!item.phone}"/>
+    <apex:column value="{!item.title}" />
+</apex:dataTable>
+
+<apex:dataList value="{!account.contacts}" var="items">
+    <apex:outputText value="{!items.name}"></apex:outputText>
+</apex:dataList>
+
+</apex:page>

@@ -1,0 +1,8 @@
+<apex:page standardController="Account">
+<apex:pageBlock title="Custom detail block">
+<apex:pageBlockSection title="Custom detail section">
+<apex:outputField value="{! account.name}"/>
+<apex:outputField value="{! account.owner.name}"/>
+</apex:pageBlockSection>
+</apex:pageBlock>
+</apex:page>

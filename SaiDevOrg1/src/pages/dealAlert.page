@@ -1,0 +1,25 @@
+<apex:page standardController="FormData__c" extensions="StdformdataController">
+<script>
+function validate(val1,val2){
+    //alert('In function..');
+    //var x = document.getElementById('{!$Component.frm.txtQual}');
+    //alert('In function......'+val1.value);
+    if(val1.value=="M.Tech"){
+    alert('M.Tech Selected'+val1.value);
+    return false;
+    }else{
+    //alert('selected... '+val1.value);
+    }   
+}
+
+</script>
+
+    <apex:form id="frm" styleClass="lf">
+        
+        <apex:pageBlock >
+            <apex:pageBlockSection >
+                <apex:inputField value="{!fData.Qualification__c}" onchange="return validate(this,'{!$Component.txtQual}');" id="txtQual"/>
+            </apex:pageBlockSection>
+        </apex:pageBlock>         
+</apex:form>
+</apex:page>

@@ -1,0 +1,89 @@
+<apex:page standardController="FormData__c" extensions="PaginationC,StdformdataController">
+<script>
+function validate(){
+    var x = document.getElementById('{!$Component.frm.txtUserName}');
+    var y = document.getElementById('{!$Component.frm.txtpwd}');
+    
+    if(x.value==""){
+    alert('User Name Cannot be null');
+    return false;
+    }else{
+    //alert(x.value);
+    }
+
+    if(y.value==""){
+    alert('Password Cannot be null');
+    return false;
+    }else{
+    //alert(y.value);
+    }
+    
+    savef();
+    document.getElementById('{!$Component.frm.txtUserName}').value="";
+    document.getElementById('{!$Component.frm.txtpwd}').value=""; 
+    return false;   
+}
+
+</script>
+
+    <apex:form id="frm" styleClass="lf">
+        
+         <apex:pageMessages id="errorMessages"/>
+    
+         UserName <apex:inputField value="{!fData.User_Name__c}" id="txtUserName"/><br></br>
+         Password <apex:inputField value="{!fData.Password__c}" id="txtpwd"/><br></br>
+         Phone <apex:inputField value="{!fData.Phone_Number__c}" id="txtphone"/><br></br> 
+         Email <apex:inputField value="{!fData.Email_Id__c}" id="txtemail"/><br></br> 
+         Qualification <apex:inputField value="{!fData.Qualification__c}" id="txtQual"/><br></br> 
+                
+         <apex:commandButton onclick="return validate()"  value="Save..!!" immediate="true" />
+         <apex:actionFunction action="{!saveForm}" name="savef" reRender="pgBlock,ssss"/>
+   
+     
+    <apex:pageblock title="Details" id="pgBlock">
+    <apex:pageblockTable value="{!Pag}" var="details" >
+         <apex:pageMessages />
+         <apex:column >
+         <apex:facet name="header">User Name</apex:facet> <!--{!details.User_Name__c}-->
+         <apex:outputLink value="/{!details.id}" > {!details.User_Name__c} </apex:outputLink>
+         </apex:column>
+            
+         <apex:column >  
+         <apex:facet name="header">Password</apex:facet> {!details.Password__c}
+         </apex:column>
+         
+         <apex:column >  
+         <apex:facet name="header">Phone Number</apex:facet> {!details.Phone_Number__c}
+         </apex:column>
+         
+         <apex:column >  
+         <apex:facet name="header">Email</apex:facet> {!details.Email_Id__c}
+         </apex:column>
+         
+         <apex:column >  
+         <apex:facet name="header">Qualification</apex:facet> {!details.Qualification__c}
+         </apex:column>                           
+         
+    </apex:pageblockTable>
+    </apex:pageblock>
+    
+     <apex:commandButton action="{!search}" value="Search it..!!" reRender="pgBlock,errorMessages,ssss"/>
+     
+     <!-- Pagination Code -->
+     
+      <apex:panelGrid columns="8">
+                <apex:commandButton status="fetchStatus" reRender="pgBlock" value="|<" action="{!setCon.first}" disabled="{!!setCon.hasPrevious}" title="First Page"/>
+                <apex:commandButton status="fetchStatus" reRender="pgBlock" value="<" action="{!setCon.previous}" disabled="{!!setCon.hasPrevious}" title="Previous Page"/>
+                <apex:commandButton status="fetchStatus" reRender="pgBlock" value=">" action="{!setCon.next}" disabled="{!!setCon.hasNext}" title="Next Page"/>
+                <apex:commandButton status="fetchStatus" reRender="pgBlock" value=">|" action="{!setCon.last}" disabled="{!!setCon.hasNext}" title="Last Page"/>
+                <apex:outputText id="ssss">{!(setCon.pageNumber * size)+1-size}-{!IF((setCon.pageNumber * size)>noOfRecords, noOfRecords,(setCon.pageNumber * size))} of {!noOfRecords}</apex:outputText>
+                <apex:commandButton status="fetchStatus" reRender="pb" value="Refresh" action="{!refresh}" title="Refresh Page"/> 
+                <apex:outputPanel style="color:#4AA02C;font-weight:bold">
+                <apex:actionStatus id="fetchStatus" startText="Fetching..." stopText=""/>
+                </apex:outputPanel>
+            </apex:panelGrid>
+    
+     
+    
+    </apex:form> 
+</apex:page>

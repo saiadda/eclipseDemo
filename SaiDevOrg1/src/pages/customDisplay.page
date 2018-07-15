@@ -1,0 +1,5 @@
+<apex:page standardController="Sports__c">
+<p>Hey {! $user.firstname}</p>
+<p>You are need to play {! sports__c.name} </p>
+<p>The owner who created this object is {! sports__c.HostelMD1__c}</p>
+</apex:page>

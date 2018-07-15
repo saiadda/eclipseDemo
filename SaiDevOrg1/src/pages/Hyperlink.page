@@ -1,0 +1,4 @@
+<apex:page >
+!--<apex:outputLink value="{! $page.accountdisplay}">Click here..!!</apex:outputLink>--!
+<apex:outputLink value="{! URLFOR($Action.Account.new)}">Create</apex:outputLink>
+</apex:page>

@@ -1,0 +1,11 @@
+<apex:page controller="DocuSignUpload">
+<apex:form >
+    <apex:pageblock >
+        <apex:commandbutton action="{!DocAuth}" value="DocuSign Authentication" >
+        </apex:commandbutton>
+    </apex:pageblock>
+    
+    <apex:inputfile value="{!file}" contentType="{!filetype}"  filename="{!filename}"/>
+    <apex:commandButton value="Validate" action="{!validate}"/>
+</apex:form>
+</apex:page>

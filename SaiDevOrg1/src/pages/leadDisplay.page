@@ -1,0 +1,4 @@
+<apex:page standardController="Lead">
+    <p>Hello {! lead.name} Lead</p>
+    <p>Email {!lead.email} </p>
+</apex:page>

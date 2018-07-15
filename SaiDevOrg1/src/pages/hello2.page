@@ -1,0 +1,7 @@
+<apex:page standardController="PickListDisplay__c" tabStyle="PickListDisplay__c">
+<apex:dataTable value="{!PickListDisplay__c}" var="data">
+<apex:column value="{!PickListDisplay__c.name}"/>
+<apex:column value="{!PickListDisplay__c.Option__c}"/>
+<apex:column value="{!PickListDisplay__c.FreeText__c}"/>
+</apex:dataTable>
+</apex:page>

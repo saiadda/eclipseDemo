@@ -1,0 +1,12 @@
+<apex:page Controller="ShowSectionController" tabStyle="PickListDisplay__c">
+    <apex:form >
+        <apex:actionFunction name="hide" action="{!hideSectionChange}" rerender="pg"/>
+     
+              <apex:pageBlock id="pg">
+              <apex:pageBlockSection title="Select A">
+                  <apex:inputField value="{!pld.Option__c}" onchange="hide('{!pld.option__c }')"/>
+                  <Apex:inputText label="Name" rendered="{!(!flag)}"/>
+              </apex:pageBlockSection>
+      </apex:pageBlock>
+    </apex:form>
+</apex:page>

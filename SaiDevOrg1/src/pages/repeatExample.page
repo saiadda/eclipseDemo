@@ -1,0 +1,40 @@
+<apex:page standardController="FormData__c" extensions="PicklistController" docType="html-5.0" id="pg">
+
+<script>
+var x;
+ window.onload=function()       
+    {        
+        //document.getElementById('j_id0:CheckPickForm:pb:pbsection:j_id2:txt').style.visibility = 'hidden';
+        document.getElementById('{!$Component.pg.CheckPickForm.pb.pbsection.pbitem.txt}').style.visibility = 'hidden';
+        //alert('Hi..load '+ document.getElementById('x')); 
+    };
+
+        function displayTextBox(val1,val2,field){
+        x=field;
+        alert('Hi.. '+val1.value+'val2.. '+val2); 
+        //alert(document.getElementById('j_id0:CheckPickForm:pb:pbsection:j_id2:txt').value);
+         if(val1.value == 'Others'){
+           // alert('Selected Other');
+                   document.getElementById(x).style.visibility = 'visible';
+                   } else {
+                    document.getElementById(x).style.visibility = 'hidden';
+                } 
+           }
+</script>
+
+    <apex:form id="CheckPickForm">
+        <apex:pageBlock title="MultiPickList" id="pb">
+            <apex:pageBlockSection title="PickList Block" id="pbsection" collapsible="false">
+                <apex:pageBlockSectionItem id="pbitem">
+                    <apex:outputPanel id="op">
+                    <!-- Choose a Hobby <apex:selectRadio onclick="return displayTextBox(this,this.checked,'{!$Component.txt}')" value="{!selectedval}" size="1"> -->
+                         Choose a Hobby <apex:selectList onchange="return displayTextBox(this,this.checked,'{!$Component.txt}')" value="{!selectedval}" size="1"> 
+                                    <apex:selectOptions value="{!PickListVals}" />
+                                    </apex:selectList><br/>
+                                    Others text <apex:inputField value="{!fdata.For_Others_Enter_here__c}" id="txt"/>
+                    </apex:outputPanel>
+                </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>  
+</apex:page>

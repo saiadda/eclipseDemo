@@ -1,0 +1,10 @@
+<apex:page standardController="Travel_Form__c" extensions="TravelRequestSubmit">
+    <apex:form >
+      From Location  <apex:inputField value="{!trvform.From__c}"/><br></br>
+      To Location    <apex:inputField value="{!trvform.From__c}"/><br></br>
+      From Date      <apex:inputField value="{!trvform.From__c}"/><br></br>
+      To Date        <apex:inputField value="{!trvform.From__c}"/><br></br>
+      
+      <apex:commandButton action="{submitForm}" value="Submit"/>
+    </apex:form>
+</apex:page>

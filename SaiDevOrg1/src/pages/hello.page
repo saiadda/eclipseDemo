@@ -1,0 +1,20 @@
+<apex:page sidebar="false" showHeader="true">
+    {!$User.FirstName & ' ' & $User.LastName}
+  <h1>Hello World..!!</h1>
+  <apex:pageBlock title="A Block">
+  <apex:pageBlockSection title="A Section">
+      I'm in three components deep...!!
+      <p> Todays date is {! Today()}</p>
+  </apex:pageBlockSection> 
+  <apex:pageblocksection title="A new Section">
+      I'm in new Section..!!
+      <p> Next week its {! Today() +7}</p>
+  </apex:pageblocksection>
+  <apex:pageBlockSection title="Formula Section">
+  <p>This is {!Year(Today())} year</p>
+  <p>The maximum of 1,2,3 is {!MAX(1,2,3)}</p>
+  <p>{!if(day(today())>3,'Can proceed','Time is up.!! Try next month')}</p>
+  <p>{!if(contains('sfdc','dc'),'Yeah','Nup')}</p>
+  </apex:pageBlockSection>
+  </apex:pageBlock>
+</apex:page>
